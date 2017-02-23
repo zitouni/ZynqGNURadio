@@ -1,0 +1,79 @@
+meta-xilinx
+===========
+
+This layer provides support for MicroBlaze, Zynq and ZynqMP.
+
+Supported Boards/Machines
+=========================
+
+Boards Supported by this layer:
+	* Xilinx KC705 Embedded TRD (MicroBlaze)
+	* Xilinx ZC702 (Zynq)
+	* Xilinx ZC706 (Zynq)
+	* Xilinx EP108 (ZynqMP)
+	* Avnet/Digilent ZedBoard (Zynq)
+	* Avnet MicroZed (Zynq)
+	* Avnet PicoZed (Zynq)
+	* Digilent Zybo (Zynq)
+
+QEMU Models Supported by this layer:
+	* qemumicroblaze (MicroBlaze)
+	* qemumicroblazeeb-s3adsp1800 (MicroBlaze)
+	* qemuzynq (Zynq)
+	* Xilinx EP108 (ZynqMP)
+
+(Please refer to the associate .conf for more information)
+
+Additional information on Xilinx architectures can be found at:
+	http://www.xilinx.com/support/index.htm
+
+Maintainers, Patches/Submissions, Community
+===========================================
+
+Please send any patches, pull requests, comments or questions for this layer to:
+
+	meta-xilinx@lists.yoctoproject.org
+
+Maintainers:
+
+	Nathan Rossi
+
+Dependencies
+============
+
+This layer depends on:
+
+	URI: git://git.openembedded.org/bitbake
+
+	URI: git://git.openembedded.org/openembedded-core
+	layers: meta
+
+Build Instructions
+==================
+
+The following instructions require a Poky installation (or equivalent).
+
+Initialize a build using the 'oe-init-build-env' script in Poky. Once
+initialized configure bblayers.conf by adding the 'meta-xilinx' layer. e.g.:
+
+	BBLAYERS ?= " \
+		<path to layer>/oe-core/meta \
+		<path to layer>/meta-xilinx \
+		"
+
+To build a specific target BSP configure the associated machine in local.conf:
+
+	MACHINE ?= "zc702-zynq7"
+
+Build the target file system image using bitbake:
+
+	$ bitbake core-image-minimal
+
+Once complete the images for the target machine will be available in the output
+directory 'tmp/deploy/images'.
+
+Additional Documentation
+========================
+
+Additional documentation can be found in the 'docs/*' directory of this layer.
+
